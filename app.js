@@ -10,7 +10,7 @@ const connectDB = require("./server/config/db.js");
 const session = require("express-session");
 
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 // Connect to DB
 
@@ -42,6 +42,6 @@ app.set("view engine", "ejs");
 app.use("/", require("./server/routes/main.js"));
 app.use("/", require("./server/routes/admin.js"));
 
-app.listen(PORT, () => {
-  console.log(`app listening on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`app listening on port http://0.0.0.0${PORT}`);
 });
